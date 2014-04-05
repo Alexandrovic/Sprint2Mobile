@@ -14,10 +14,18 @@ import java.util.Date;
  */
 public class Voyageur {
     
-    
+    public int id ;
     public String  nom ;
     public String prenom ;
     public String email;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String password;
     public Date  date_inscrip ;
    
