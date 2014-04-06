@@ -78,31 +78,7 @@ public class Midletdetail extends MIDlet implements CommandListener,Runnable{
     }
 
     public void run() {
-          try {
-            // this will handle our XML
-            PersonneHandler personnesHandler = new PersonneHandler();
-              voyageHandler voyhandler = new voyageHandler();
-            // get a parser object
-            SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            // get an InputStream from somewhere (could be HttpConnection, for example)
-            HttpConnection hc = (HttpConnection) Connector.open("http://localhost:8080/getXmlPersonnes.php");
-            DataInputStream dis = new DataInputStream(hc.openDataInputStream());
-            parser.parse(dis, personnesHandler);
-            // display the result
-            personnes = personnesHandler.getPersonne();
-
-            if (personnes.length > 0) {
-                for (int i = 0; i < personnes.length; i++) {
-                    lst.append(personnes[i].getNom(), null);
-
-                }
-            }
-
-        } catch (Exception e) {
-            System.out.println("Exception:" + e.toString());
-        }
-        disp.setCurrent(lst);
-
+      
     }
 
    
