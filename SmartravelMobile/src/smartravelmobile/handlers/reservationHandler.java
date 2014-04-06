@@ -6,14 +6,32 @@
 
 package smartravelmobile.handlers;
 
+import java.util.Vector;
+import smartravelmobile.entities.Reservation;
+import smartravelmobile.entities.Voyage;
+
 /**
  *
  * @author Belgacem
  */
 public class reservationHandler {
     
+    private  Vector resrvs  ; 
+     String idTag ;
+    String paymentTag ;
+    String date_inscriptionTag ;
+    String  id_voyageTag ; 
+    String  id_voyageurTag ; 
     
     
+    public reservationHandler() {
+    }
     
+       public Reservation[] getReservs() {
+       Reservation[] res = new Reservation[resrvs.size()];
+        resrvs.copyInto(res);
+        return res;
+    }
     
+  
 }
