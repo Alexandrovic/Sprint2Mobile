@@ -26,7 +26,7 @@ public class voyageurHandler extends DefaultHandler {
     String passwordTag = "close";
 
     public voyageurHandler() {
-        this.mailTag = "close";
+       
 
     }
 
@@ -41,7 +41,7 @@ public class voyageurHandler extends DefaultHandler {
     // XML EVENT PROCESSING METHODS (DEFINED BY DefaultHandler)
     // startElement is the opening part of the tag "<tagname...>"
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        if (qName.equals("personne")) {
+        if (qName.equals("voyageur")) {
 
             if (currentVoy != null) {
                 throw new IllegalStateException("already processing a voys");
@@ -62,7 +62,7 @@ public class voyageurHandler extends DefaultHandler {
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
 
-        if (qName.equals("personne")) {
+        if (qName.equals("voyage")) {
             // we are no longer processing a <reg.../> tag
             voys.addElement(currentVoy);
             currentVoy = null;
@@ -95,11 +95,14 @@ public class voyageurHandler extends DefaultHandler {
                 String prenom = new String(ch, start, length).trim();
                 currentVoy.setPrenom(prenom);
             } else if (mailTag.equals("open")) {
-                String mail = new String(ch, start, length).trim();
+                 String mail = new String(ch, start, length).trim();
+                 currentVoy.setEmail(mail);
             }else if(passwordTag.equals("open")){
-            String pass = new  String(ch, start, length).trim();
+                String pass = new  String(ch, start, length).trim();
+                currentVoy.setPassword(pass);
             }
         }
+     
     }
 
 }
