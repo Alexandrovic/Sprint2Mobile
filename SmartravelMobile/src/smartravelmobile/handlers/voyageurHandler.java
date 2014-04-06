@@ -18,6 +18,7 @@ import smartravelmobile.entities.Voyageur;
 public class voyageurHandler extends DefaultHandler {
 
     private Vector voys;
+    
     String idTag = "close";
     String nomTag = "close";
     String prenTag = "close";
@@ -29,7 +30,7 @@ public class voyageurHandler extends DefaultHandler {
 
     }
 
-    public Voyageur[] getPersonne() {
+    public Voyageur[] getVoyageur() {
         Voyageur[] vs = new Voyageur[voys.size()];
         voys.copyInto(vs);
         return vs;

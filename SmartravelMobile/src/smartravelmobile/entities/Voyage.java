@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package smartravelmobile.entities;
 
 import java.util.Date;
@@ -16,21 +15,18 @@ public class Voyage {
 
     public Voyage() {
     }
-     String type_voyage;
     int id_voyage;
     String moyen_transport;
-   String  destination ;
-   float budget ;
-   int nb_place;
-   
-   String programme;
-   String itineraire;
+    String destination;
+    float budget;
+    int nb_place;
+    String type_voyage;
+    String programme;
+    String itineraire;
     Date date_depart;
     Date date_retour;
     int voyage_responsable;
 
-  
-    
     public int getNb_place() {
         return nb_place;
     }
@@ -38,9 +34,7 @@ public class Voyage {
     public void setNb_place(int nb_place) {
         this.nb_place = nb_place;
     }
-    
-    
-    
+
     public int getId_voyage() {
         return id_voyage;
     }
@@ -113,7 +107,7 @@ public class Voyage {
         this.voyage_responsable = voyage_responsable;
     }
 
-    public Voyage(int id_voyage, String type_voyage,String moyen_transport, String destination, float budget,int nb_place, String programme, String itineraire, Date date_depart, Date date_retour, int voyage_responsable) {
+    public Voyage(int id_voyage, String type_voyage, String moyen_transport, String destination, float budget, int nb_place, String programme, String itineraire, Date date_depart, Date date_retour, int voyage_responsable) {
         this.id_voyage = id_voyage;
         this.moyen_transport = moyen_transport;
         this.destination = destination;
@@ -123,7 +117,7 @@ public class Voyage {
         this.date_depart = date_depart;
         this.date_retour = date_retour;
         this.voyage_responsable = voyage_responsable;
-        this.type_voyage=type_voyage;
+        this.type_voyage = type_voyage;
     }
 
     public String getType_voyage() {
@@ -134,8 +128,4 @@ public class Voyage {
         this.type_voyage = type_voyage;
     }
 
-   
-    
-    
-    
 }
