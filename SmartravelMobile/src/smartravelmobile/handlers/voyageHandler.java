@@ -18,19 +18,18 @@ import org.xml.sax.SAXException;
 public class voyageHandler extends DefaultHandler {
 
     private Vector voys;
-
     String id_voyageT;
     String moyen_transportT;
     String destinationT;
     String budgetT;
     String nb_placeT;
-
     String programmeT;
     String itineraireT;
     String date_departT;
     String date_retourT;
     String voyage_responsableT;
     String type_voyageT;
+  
 
     public voyageHandler() {
 
@@ -67,8 +66,12 @@ public class voyageHandler extends DefaultHandler {
             itineraireT = "open";
         } else if (qName.equals("date_depart")) {
             date_departT = "open";
-        } else if (qName.equals("voyage_responsable")) {
+        }else if (qName.equals("date_retour")) {
+            date_retourT = "open";
+        }else if (qName.equals("voyage_responsable")) {
             voyage_responsableT = "open";
+        }else if (qName.equals("Type")) {
+            type_voyageT = "open";
         }
     }
 
@@ -95,9 +98,13 @@ public class voyageHandler extends DefaultHandler {
         } else if (qName.equals("iteniraire")) {
             itineraireT = "close";
         } else if (qName.equals("date_depart")) {
-            date_departT = "close";
-        } else if (qName.equals("voyage_responsable")) {
+            date_departT = "Close";
+        }else if (qName.equals("date_retour")) {
+            date_retourT = "close";
+        }else if (qName.equals("voyage_responsable")) {
             voyage_responsableT = "close";
+        }else if (qName.equals("Type")) {
+            type_voyageT = "close";
         }
     }
     // "characters" are the text inbetween tags
@@ -127,11 +134,11 @@ public class voyageHandler extends DefaultHandler {
             } else if (programmeT.equals("open")) {
                 String prog = new String(ch, start, length).trim();
                 currentAnnon.setProgramme(prog);
-            } else if (itineraireT.equals("open")) {
-                String iten = new String(ch, start, length).trim();
-                currentAnnon.setItineraire(iten);
-            } else if (date_departT.equals("open")) {
-                String date = new String(ch, start, length).trim();
+//            } else if (itineraireT.equals("open")) {
+//                String iten = new String(ch, start, length).trim();
+//                currentAnnon.setItineraire(iten);
+//            } else if (date_departT.equals("open")) {
+//                String date = new String(ch, start, length).trim();
 
             } else if (voyage_responsableT.equals("open")) {
                 String resp = new String(ch, start, length).trim();

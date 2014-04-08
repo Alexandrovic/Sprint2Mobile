@@ -6,11 +6,6 @@
 
 package smartravelmobile.handlers;
 
-import java.util.Date;
-import smartravelmobile.entities.Facture;
-import smartravelmobile.entities.Voyage;
-import smartravelmobile.entities.Voyageur;
-
 /**
  *
  * @author Belgacem

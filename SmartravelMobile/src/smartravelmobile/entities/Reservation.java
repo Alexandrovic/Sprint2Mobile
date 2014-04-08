@@ -21,7 +21,7 @@ public class Reservation {
     boolean payment ;
     Date date_inscription ;
     Voyage voyage;
-    Voyageur voy ; 
+    voyageur voy ; 
     Facture facture ; 
 
     public int getId() {
@@ -40,7 +40,7 @@ public class Reservation {
         return voyage;
     }
 
-    public Voyageur getVoy() {
+    public voyageur getVoy() {
         return voy;
     }
 
@@ -64,7 +64,7 @@ public class Reservation {
         this.voyage = voyage;
     }
 
-    public void setVoy(Voyageur voy) {
+    public void setVoy(voyageur voy) {
         this.voy = voy;
     }
 
