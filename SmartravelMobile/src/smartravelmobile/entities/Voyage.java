@@ -23,8 +23,8 @@ public class Voyage {
     String type_voyage;
     String programme;
     String itineraire;
-    Date date_depart;
-    Date date_retour;
+    String  date_depart;
+    String  date_retour;
     int voyage_responsable;
 
     public int getNb_place() {
@@ -83,19 +83,19 @@ public class Voyage {
         this.itineraire = itineraire;
     }
 
-    public Date getDate_depart() {
+    public String getDate_depart() {
         return date_depart;
     }
 
-    public void setDate_depart(Date date_depart) {
+    public void setDate_depart(String date_depart) {
         this.date_depart = date_depart;
     }
 
-    public Date getDate_retour() {
+    public String getDate_retour() {
         return date_retour;
     }
 
-    public void setDate_retour(Date date_retour) {
+    public void setDate_retour(String date_retour) {
         this.date_retour = date_retour;
     }
 
@@ -107,18 +107,7 @@ public class Voyage {
         this.voyage_responsable = voyage_responsable;
     }
 
-    public Voyage(int id_voyage, String type_voyage, String moyen_transport, String destination, float budget, int nb_place, String programme, String itineraire, Date date_depart, Date date_retour, int voyage_responsable) {
-        this.id_voyage = id_voyage;
-        this.moyen_transport = moyen_transport;
-        this.destination = destination;
-        this.budget = budget;
-        this.programme = programme;
-        this.itineraire = itineraire;
-        this.date_depart = date_depart;
-        this.date_retour = date_retour;
-        this.voyage_responsable = voyage_responsable;
-        this.type_voyage = type_voyage;
-    }
+ 
 
     public String getType_voyage() {
         return type_voyage;

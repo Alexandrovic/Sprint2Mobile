@@ -138,11 +138,13 @@ public class voyageHandler extends DefaultHandler {
             } else if (date_departT.equals("open")) {
                 
                String dated = new String(ch, start, length).trim();
-
+                     currentAnnon.setDate_depart(dated);
+                     
             }else if (date_retourT.equals("open")) {
                 
                String dater = new String(ch, start, length).trim();
-
+               currentAnnon.setDate_retour(dater);
+                System.out.println(currentAnnon.getDate_retour()+"ZZZZZZZZZZZZ");
             } else if (voyage_responsableT.equals("open")) {
                 String resp = new String(ch, start, length).trim();
                 int id_resp = Integer.parseInt(resp);
