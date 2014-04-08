@@ -32,7 +32,7 @@ public class voyageHandler extends DefaultHandler {
   
 
     public voyageHandler() {
-
+       voys = new Vector();
     }
 
     public Voyage[] getVoyages() {
@@ -62,7 +62,7 @@ public class voyageHandler extends DefaultHandler {
             nb_placeT = "open";
         } else if (qName.equals("programme")) {
             programmeT = "open";
-        } else if (qName.equals("iteniraire")) {
+        } else if (qName.equals("itineraire")) {
             itineraireT = "open";
         } else if (qName.equals("date_depart")) {
             date_departT = "open";
@@ -79,10 +79,8 @@ public class voyageHandler extends DefaultHandler {
 
         if (qName.equals("annonce")) {
 
-            if (currentAnnon != null) {
-                throw new IllegalStateException("already processing a voys");
-            }
-            currentAnnon = new Voyage();
+           voys.addElement(currentAnnon);
+           currentAnnon = null;
         } else if (qName.equals("id_voyage")) {
             id_voyageT = "close";
         } else if (qName.equals("moyen_transport")) {
@@ -134,11 +132,16 @@ public class voyageHandler extends DefaultHandler {
             } else if (programmeT.equals("open")) {
                 String prog = new String(ch, start, length).trim();
                 currentAnnon.setProgramme(prog);
-//            } else if (itineraireT.equals("open")) {
-//                String iten = new String(ch, start, length).trim();
-//                currentAnnon.setItineraire(iten);
-//            } else if (date_departT.equals("open")) {
-//                String date = new String(ch, start, length).trim();
+            } else if (itineraireT.equals("open")) {
+                String iten = new String(ch, start, length).trim();
+                currentAnnon.setItineraire(iten);
+            } else if (date_departT.equals("open")) {
+                
+               String dated = new String(ch, start, length).trim();
+
+            }else if (date_retourT.equals("open")) {
+                
+               String dater = new String(ch, start, length).trim();
 
             } else if (voyage_responsableT.equals("open")) {
                 String resp = new String(ch, start, length).trim();

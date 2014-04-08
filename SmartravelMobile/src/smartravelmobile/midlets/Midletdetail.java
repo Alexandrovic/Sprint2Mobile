@@ -6,6 +6,7 @@ package smartravelmobile.midlets;
  * and open the template in the editor.
  */
 import java.io.DataInputStream;
+import java.util.Date;
 import java.util.TimeZone;
 import javax.microedition.io.Connector;
 import javax.microedition.io.HttpConnection;
@@ -86,6 +87,7 @@ public class Midletdetail extends MIDlet implements CommandListener, Runnable {
                 }
             }
              stdest.setText(annonce.getDestination());
+             System.out.println(annonce.getDestination()+"aaabbcc") ;
              stmoy.setText(annonce.getMoyen_transport());
            
              int nb = annonce.getNb_place();
@@ -96,14 +98,14 @@ public class Midletdetail extends MIDlet implements CommandListener, Runnable {
              stagence.setText("agence 1 ");
             
             df.setLabel(null);
-            Image source = null;
+            Image source ;
             
             source = Image.createImage("/smartravelmobile/media/logo.jpg");
 
             f.append(source);
-         //        f.append(df);
+//          f.append(df);
             f.append(stdest);
-            f.append(stplaces);
+//          f.append(stplaces);
             f.append(stmoy);
             f.append(stprog);
             f.append(stagence);
