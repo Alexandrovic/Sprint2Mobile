@@ -91,7 +91,7 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
                    /// listeservices.append(prestataires[i].getDomaine(), null);
                    listeannonces.append(voyages[i].getDestination(), null);
                    listeannonces.append("Nbr de places "+voyages[i].getNb_place(), null);
-                   listeannonces.append("Prix "+voyages[i].getBudget(), null);
+                 //  listeannonces.append("Date "+voyages[i], null);
                    j++;
                    
                    
@@ -138,4 +138,5 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
         sb = new StringBuffer("");
         return res;
     }
+    
 }
