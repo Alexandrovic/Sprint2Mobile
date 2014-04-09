@@ -84,9 +84,18 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
             voyages = voyagesHandler.getVoyages(); //get_personne
 
             if (voyages.length > 0) {
+               int j=1;
                 for (int i = 0; i < voyages.length; i++) {
+                     listeannonces.append("",null);
+                    listeannonces.append(" Annonce N°"+j, null);
                    /// listeservices.append(prestataires[i].getDomaine(), null);
                    listeannonces.append(voyages[i].getDestination(), null);
+                   listeannonces.append("Nbr de places "+voyages[i].getNb_place(), null);
+                   listeannonces.append("Prix "+voyages[i].getBudget(), null);
+                   j++;
+                   
+                   
+                   
 ///ici tableau lazem /// lst.append(voyages[i].getDestination(), null);  //getNom()
 
                 }
