@@ -17,6 +17,7 @@ import smartravelmobile.entities.Voyage;
 import org.xml.sax.helpers.DefaultHandler;
 import  org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+import smartravelmobile.entities.Facture;
 /**
  *
  * @author Belgacem
@@ -40,15 +41,15 @@ public class factureHandler extends DefaultHandler{
         return ans;
     }
     // VARIABLES TO MAINTAIN THE PARSER'S STATE DURING PROCESSING
-    private Voyage currentAnnon;
+    private Facture currentFacture;
 
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if (qName.equals("annonce")) {
 
-            if (currentAnnon != null) {
+            if (currentFacture != null) {
                 throw new IllegalStateException("already processing a voys");
             }
-            currentAnnon = new Voyage();
+            currentFacture = new Facture();
         } else if (qName.equals("id_facture")) {
             id_factureT = "open";
         } else if (qName.equals("n_serie")) {
@@ -64,8 +65,8 @@ public class factureHandler extends DefaultHandler{
 
         if (qName.equals("annonce")) {
 
-           fcts.addElement(currentAnnon);
-           currentAnnon = null;
+           fcts.addElement(currentFacture);
+           currentFacture = null;
         } else if (qName.equals("id_facture")) {
             id_factureT = "close";
         } else if (qName.equals("n_serie")) {
@@ -80,23 +81,25 @@ public class factureHandler extends DefaultHandler{
 
     public void characters(char[] ch, int start, int length) throws SAXException {
         // we're only interested in this inside a <phone.../> tag
-        if (currentAnnon != null) {
+        if (currentFacture != null) {
             // don't forget to trim excess spaces from the ends of the string
             if (id_factureT.equals("open")) {
                 String ids = new String(ch, start, length).trim();
                 int id = Integer.parseInt(ids);
-                currentAnnon.setId_voyage(id);
+                currentFacture.setId_facture(id);
             } else if (n_serieT.equals("open")) {
-                String moy = new String(ch, start, length).trim();
-                currentAnnon.setMoyen_transport(moy);
+                String ser = new String(ch, start, length).trim();
+                currentFacture.setNumero_serie_facture(ser);
             } else if (somme_factureT.equals("open")) {
-                String dest = new String(ch, start, length).trim();
-                currentAnnon.setDestination(dest);
+                String som = new String(ch, start, length).trim();
+                float s = Float.parseFloat(som);
+                currentFacture.setSomme_facture(s);
             } else if (date_payement_factureT.equals("open")) {
-                String bud = new String(ch, start, length).trim();
-                float budget = Float.parseFloat(bud);
-                currentAnnon.setBudget(budget);
-            } 
+                
+               String dated = new String(ch, start, length).trim();
+                     currentFacture.setDate_payement_facture(dated);
+                     
+            }
         }
     }
 }
