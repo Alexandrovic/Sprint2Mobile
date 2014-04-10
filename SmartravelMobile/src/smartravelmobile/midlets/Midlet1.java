@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package smartravelmobile.midlets;
 
 import java.io.DataInputStream;
@@ -17,25 +16,27 @@ import javax.microedition.midlet.*;
 import smartravelmobile.entities.Voyage;
 import smartravelmobile.handlers.voyageHandler;
 
-
 /**
  * @author pc
  */
 public class Midlet1 extends MIDlet implements CommandListener, Runnable {
-     Display disp = Display.getDisplay(this);
+
+    Display disp = Display.getDisplay(this);
     Command cmdParse = new Command("Liste Annonces", Command.SCREEN, 0);
     Command cmdBack = new Command("Back", Command.BACK, 0);
     Command cmdinfo = new Command("Details", Command.BACK, 0);
     Voyage[] voyages;
     /// lst :
     List listeannonces = new List("Annonces", List.IMPLICIT);
+    String[] items = {"", "", ""};
+    List lst = new List("Annonces", List.IMPLICIT, items, null);
     Form f = new Form("Acceuil");
     Form form = new Form("Liste Annonces");
     Form loadingDialog = new Form("Please Wait");
     StringBuffer sb = new StringBuffer();
-   
+
     public void startApp() {
-         f.append("Passer à la liste des annnonces");
+        f.append("Passer à la liste des annnonces");
         f.addCommand(cmdParse);
         f.setCommandListener(this);
         form.addCommand(cmdBack);
@@ -43,6 +44,7 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
         disp.setCurrent(f);
         listeannonces.addCommand(cmdinfo);
         listeannonces.setCommandListener(this);
+
     }
 
     public void pauseApp() {
@@ -50,7 +52,8 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
 
     public void destroyApp(boolean unconditional) {
     }
-        public void commandAction(Command c, Displayable d) {
+
+    public void commandAction(Command c, Displayable d) {
         if (c == cmdParse) {
             disp.setCurrent(loadingDialog);
             Thread th = new Thread(this);
@@ -58,8 +61,11 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
         }
 
         if (c == cmdinfo) {
-            form.append("Informations Voyage: \n");
+            //form.append("Informations Voyage: \n");
             form.append(showAnnonce(listeannonces.getSelectedIndex()));
+            // if(c == List.SELECT_COMMAND){
+            //System.out.println("index :"+ lst.getSelectedIndex());
+            //}
             disp.setCurrent(form);
         }
 
@@ -84,20 +90,16 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
             voyages = voyagesHandler.getVoyages(); //get_personne
 
             if (voyages.length > 0) {
-               int j=1;
+                int j = 1;
                 for (int i = 0; i < voyages.length; i++) {
-                     listeannonces.append("",null);
-                    listeannonces.append(" Annonce N°"+j, null);
-                   /// listeservices.append(prestataires[i].getDomaine(), null);
-                   listeannonces.append(voyages[i].getDestination(), null);
-                   listeannonces.append("Nbr de places "+voyages[i].getNb_place(), null);
-                 //  listeannonces.append("Date "+voyages[i], null);
-                   j++;
-                   
-                   
-                   
-///ici tableau lazem /// lst.append(voyages[i].getDestination(), null);  //getNom()
-
+                    // lst.append(voyages[i].getDestination(), null);
+                    listeannonces.append(" Annonce N°" + j + "  Destination: " + voyages[i].getDestination() + "Nbr de places " + voyages[i].getNb_place(), null);
+                    // listeannonces.append(" Annonce N°" + j, null);
+                    //listeannonces.append(voyages[i].getDestination(), null);                    
+                    // listeannonces.append("Nbr de places "+voyages[i].getNb_place(), null);
+                    ///    lst.append(voyages[i].getNb_place()+"", null);
+                    ////  listeannonces.append("Date "+voyages[i], null);
+                    j++;
                 }
             }
 
@@ -109,27 +111,24 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
 
     private String showAnnonce(int i) {
         String res = "";
-       //////
+        //////
         if (voyages.length > 0) {
             sb.append("Destination");
             sb.append(voyages[i].getDestination());
             sb.append("\n");
-            
-            
+
             sb.append("Date_depart");
             sb.append(voyages[i].getDate_depart());
             sb.append("\n");
-            
-            
+
             sb.append("Date_retour");
             sb.append(voyages[i].getDate_retour());
             sb.append("\n");
-            
-            
+
             sb.append("Itineraire");
             sb.append(voyages[i].getItineraire());
             sb.append("\n");
-            
+
             sb.append("Nb_place");
             sb.append(voyages[i].getNb_place());
             sb.append("\n");
@@ -138,5 +137,5 @@ public class Midlet1 extends MIDlet implements CommandListener, Runnable {
         sb = new StringBuffer("");
         return res;
     }
-    
+
 }
